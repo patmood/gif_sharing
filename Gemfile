@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'pg'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
@@ -26,6 +28,13 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
