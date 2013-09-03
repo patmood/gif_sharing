@@ -1,5 +1,7 @@
 $(document).ready(function() {
-  $('div').click(function(){
+  var nextGif = function(){
     window.location.href='/'
-  })
+  }
+
+  $('div').click(nextGif)
 })
