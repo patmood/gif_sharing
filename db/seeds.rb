@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Gif.create(url: 'http://i.imgur.com/yPlpJoX.gif', token: 'yPlpJoX')
+Gif.create(url: 'http://i.imgur.com/UEdbYuO.gif', token: 'UEdbYuO')
+Gif.create(url: 'http://i.imgur.com/muxZmxu.gif', token: 'muxZmxu')
+Gif.create(url: 'http://i.imgur.com/odXyrW7.gif', token: 'odXyrW7')
+Gif.create(url: 'http://i.imgur.com/c6BhPjf.gif', token: 'c6BhPjf')
+Gif.create(url: 'http://i.imgur.com/4acXdRj.jpg', token: '4acXdRj')
+Gif.create(url: 'http://i.imgur.com/bokfXa5.gif', token: 'bokfXa5')
+Gif.create(url: 'http://i.imgur.com/X7dW5rr.gif', token: 'X7dW5rr')
+Gif.create(url: 'http://i.imgur.com/7ZjyR.gif', token: '7ZjyR')

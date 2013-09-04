@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20130903102729) do
 
   create_table "gifs", force: true do |t|
     t.string   "url"
-    t.string   "imgurstub"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
