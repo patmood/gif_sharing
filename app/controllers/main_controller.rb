@@ -15,8 +15,9 @@ class MainController < ApplicationController
     @previous_token = session[:gifs_seen][previous_index]
     @next_token = session[:gifs_seen][next_index]
 
-    # p "====================================="
-    # p session[:gifs_seen]
+    p "================ SESSIONS ====================="
+    p session[:gifs_seen]
+    p session[:votes]
     # p previous_index
     # p next_index
     # p @previous_token
@@ -25,7 +26,11 @@ class MainController < ApplicationController
   end
 
   def clear
-    session.clear
+    p "================ SESSIONS ====================="
+    p session[:gifs_seen]
+    p session[:votes]
+    session[:gifs_seen] = []
+    session[:votes] = []
     redirect_to root_path
   end
 
@@ -42,6 +47,8 @@ class MainController < ApplicationController
   end
 
   def boat
+    p "================ VOTE PARAMS ====================="
+    p params
     session[:votes][params[:token]] = params[:vote]
     Gif.vote(params[:token],params[:vote])
     render :nothing => true, :status => 200, :content_type => 'text/html'

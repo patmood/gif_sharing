@@ -38,7 +38,7 @@ function highlightUp(){
 function highlightDown(){
   $('.icon-arrow-down').addClass('highlight')
   $('.icon-arrow-up').removeClass('highlight')
-  var newScore = parseInt($('.score').text)-1
+  var newScore = parseInt($('.score').text())-1
   $('.score').text(newScore)
 }
 function hasVoted(){
