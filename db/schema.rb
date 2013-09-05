@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20130903102729) do
   create_table "gifs", force: true do |t|
     t.string   "url"
     t.string   "token"
+    t.integer  "upvotes",    default: 0
+    t.integer  "downvotes",  default: 0
+    t.integer  "score",      default: 0
+    t.boolean  "nsfw",       default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

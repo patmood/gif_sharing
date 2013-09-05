@@ -7,6 +7,7 @@ class MainController < ApplicationController
 
   def show
     session[:gifs_seen] ||= []
+    session[:votes] ||= {}
     @image = Gif.find_by_token(params[:token])
     session[:gifs_seen] << @image.token unless session[:gifs_seen].include?(@image.token)
     previous_index = session[:gifs_seen].index(params[:token])-1
@@ -14,12 +15,13 @@ class MainController < ApplicationController
     @previous_token = session[:gifs_seen][previous_index]
     @next_token = session[:gifs_seen][next_index]
 
-    p "====================================="
-    p session[:gifs_seen]
-    p previous_index
-    p next_index
-    p @previous_token
-    p @next_token
+    # p "====================================="
+    # p session[:gifs_seen]
+    # p previous_index
+    # p next_index
+    # p @previous_token
+    # p @next_token
+
   end
 
   def clear
@@ -37,5 +39,11 @@ class MainController < ApplicationController
       @gif = Gif.create(url: params['url'], token: token)
       redirect_to "/#{token}"
     end
+  end
+
+  def boat
+    session[:votes][params[:token]] = params[:vote]
+    Gif.vote(params[:token],params[:vote])
+    render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 end
