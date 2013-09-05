@@ -3,9 +3,10 @@ class CreateGifs < ActiveRecord::Migration
     create_table :gifs do |t|
       t.string :url
       t.string :token
-      t.integer :upvotes
-      t.integer :downvotes
-      t.integer :score
+      t.integer :upvotes, default: 0
+      t.integer :downvotes, default: 0
+      t.integer :score, default: 0
+      t.boolean :nsfw, default: false, null: false
       t.timestamps
     end
   end
