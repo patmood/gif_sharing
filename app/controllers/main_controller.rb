@@ -26,11 +26,11 @@ class MainController < ApplicationController
   end
 
   def clear
-    p "================ SESSIONS ====================="
+    p "================ CLEAR SESSIONS ====================="
     p session[:gifs_seen]
     p session[:votes]
     session[:gifs_seen] = []
-    session[:votes] = []
+    session[:votes] = {}
     redirect_to root_path
   end
 
@@ -49,7 +49,13 @@ class MainController < ApplicationController
   def boat
     p "================ VOTE PARAMS ====================="
     p params
+    p "================ BEFORE SESSIONS ====================="
+    p session[:gifs_seen]
+    p session[:votes]
     session[:votes][params[:token]] = params[:vote]
+    p "================ AFTER SESSIONS ====================="
+    p session[:gifs_seen]
+    p session[:votes]
     Gif.vote(params[:token],params[:vote])
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end

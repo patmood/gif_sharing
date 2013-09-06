@@ -2,14 +2,24 @@ $(document).ready(function() {
   var nextGif = function(){ window.location.href='/'+$('#neighbors').data('next') }
   var prevGif = function(){ window.location.href='/'+$('#neighbors').data('prev') }
   var vote = function(value){
-    console.log(hasVoted())
+    console.log('value argument: ',value)
+    console.log('has voted: ',!hasVoted())
+    var token = $('#neighbors').data('token')
+    console.log(token,value)
     if (!hasVoted()) {
-      $.post('/boat', {token: $('#neighbors').data('token'), vote: value})
-      if (value === "down") {
-        nextGif()
-        highlightDown()
-      }
-      if (value === "up") highlightUp()
+      $.ajax({
+        type: 'POST',
+        url: '/boat',
+        success: function(){
+          if (value === "down") {
+            highlightDown()
+            // nextGif()
+          }
+          if (value === "up") highlightUp()
+        },
+        data: {token: token, vote: value},
+        async:false
+      })
     }
   }
 
