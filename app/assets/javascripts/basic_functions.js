@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  checkPreviousVote()
   var nextGif = function(){ window.location.href='/'+$('#neighbors').data('next') }
   var prevGif = function(){ window.location.href='/'+$('#neighbors').data('prev') }
   var vote = function(value){
@@ -11,11 +12,15 @@ $(document).ready(function() {
         type: 'POST',
         url: '/boat',
         success: function(){
-          if (value === "down") {
+          if (value === "up"){
+            highlightUp()
+            changeScoreDisplay(1)
+          }
+          if (value === "down"){
             highlightDown()
+            changeScoreDisplay(-1)
             // nextGif()
           }
-          if (value === "up") highlightUp()
         },
         data: {token: token, vote: value},
         async:false
@@ -45,15 +50,19 @@ $(document).ready(function() {
 function highlightUp(){
   $('#upvote').addClass('highlight')
   $('#downvote').removeClass('highlight')
-  var newScore = parseInt($('.score').text())+1
-  $('.score').text(newScore)
 }
 function highlightDown(){
   $('#downvote').addClass('highlight')
   $('#upvote').removeClass('highlight')
-  var newScore = parseInt($('.score').text())-1
-  $('.score').text(newScore)
 }
 function hasVoted(){
   return $('#upvote').hasClass('highlight') || $('#downvote').hasClass('highlight')
+}
+function checkPreviousVote(){
+  if ($('#neighbors').data('vote') === "up") highlightUp()
+  if ($('#neighbors').data('vote') === "down") highlightDown()
+}
+function changeScoreDisplay(change){
+  var newScore = parseInt($('.score').text())+change
+  $('.score').text(newScore)
 }

@@ -14,6 +14,7 @@ class MainController < ApplicationController
     next_index = session[:gifs_seen].index(params[:token])+1
     @previous_token = session[:gifs_seen][previous_index]
     @next_token = session[:gifs_seen][next_index]
+    @vote = session[:votes][@image.token]
 
     p "================ SESSIONS ====================="
     p session[:gifs_seen]
