@@ -13,7 +13,10 @@ $(document).ready(function() {
     }
   }
 
-  $('div').click(nextGif)
+
+  $('#huge').click(nextGif)
+  $('#upvote').click(function(){ vote("up") })
+  $('#downvote').click(function(){ vote("down") })
 
   // keyboard controls
   $(document).keydown(function(e){
@@ -30,17 +33,17 @@ $(document).ready(function() {
 })
 
 function highlightUp(){
-  $('.icon-arrow-up').addClass('highlight')
-  $('.icon-arrow-down').removeClass('highlight')
+  $('#upvote').addClass('highlight')
+  $('#downvote').removeClass('highlight')
   var newScore = parseInt($('.score').text())+1
   $('.score').text(newScore)
 }
 function highlightDown(){
-  $('.icon-arrow-down').addClass('highlight')
-  $('.icon-arrow-up').removeClass('highlight')
+  $('#downvote').addClass('highlight')
+  $('#upvote').removeClass('highlight')
   var newScore = parseInt($('.score').text())-1
   $('.score').text(newScore)
 }
 function hasVoted(){
-  return $('.icon-arrow-up').hasClass('highlight') || $('.icon-arrow-down').hasClass('highlight')
+  return $('#upvote').hasClass('highlight') || $('#downvote').hasClass('highlight')
 }

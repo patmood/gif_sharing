@@ -24,6 +24,6 @@
   display: inline-block;
   position: relative;
 }
-.highlight{
+.highlight, .highlight button{
   color: #f1c40f;
 }
