@@ -1,10 +1,10 @@
 class Gif < ActiveRecord::Base
 
   def self.unique_random(seen_array = [])
-    gif = uncached { Gif.order("RANDOM()").first }
+    gif = Gif.random
     i = 0
     while seen_array.include?(gif.token) && i < 10
-      gif = uncached { Gif.order("RANDOM()").first }
+      gif = Gif.random
       i += 1
     end
     gif

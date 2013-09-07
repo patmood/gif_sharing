@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'pg'
+# Database
+# gem 'pg'
+gem 'mysql2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -32,6 +34,7 @@ gem 'jbuilder', '~> 1.2'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :doc do
@@ -43,8 +46,8 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
-# gem 'unicorn'
-
+gem 'unicorn'
+gem 'unicorn-rails'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
